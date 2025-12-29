@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Animal{% endblock %}
+{% block content %}
+<div class="container text-center">
+    <h1>{{animal['name']}}</h1>
+</div>
+<div class="container">
+    <dl class="row">
+
+        <dt class="col-sm-3">Espèce :</dt>
+        <dd class="col-sm-9">{{animal['species']}}</dd>
+
+        <dt class="col-sm-3">Race :</dt>
+        <dd class="col-sm-9">{{animal['breed']}}</dd>
+
+        <dt class="col-sm-3">Âge :</dt>
+        <dd class="col-sm-9">{{animal['age']}} {{'an' if animal['age'] == 1 else 'ans'}}</dd>
+
+        <dt class="col-sm-3">Description :</dt>
+        <dd class="col-sm-9">{{animal['description']}}</dd>
+
+        <dt class="col-sm-3">Courriel contact :</dt>
+        <dd class="col-sm-9">{{animal['email']}}</dd>
+
+        <dt class="col-sm-3">Adresse :</dt>
+        <dd class="col-sm-9">{{animal['address']}}</dd>
+
+        <dt class="col-sm-3">Ville :</dt>
+        <dd class="col-sm-9">{{animal['city']}}</dd>
+
+        <dt class="col-sm-3">Code postal :</dt>
+        <dd class="col-sm-9">{{animal['post_code']}}</dd>
+    </dl>
+    <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;"
+        href="mailto:{{ animal['courriel'] }}">
+        Contactez le propriétaire
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+        </svg>
+    </a>
+</div>
+<div class="container text-center">
+    <a class="btn btn-primary btn-lg mt-4 mb-2" href="{{url_for('form_animal')}}" role="button">Formulaire de mise en
+        adoption</a>
+</div>
+
+{% endblock %}

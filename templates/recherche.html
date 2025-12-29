@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>recherche</title>
+</head>
+
+<body>
+    <form action="" method="POST">
+        <h1>Chreche de proprietaires</h1>
+        <label for="nom">Saisir un nom : </label>
+        <input type="text" id="nom" name="nom">
+        <input type="submit" value="Chercher">
+    </form>
+    {% if proprietaires is not none %}
+       {% if proprietaires|length == 0 %}
+       <p>Aucun proprietaire coincide avec ce nom</p>
+    {% else %}
+    <ul>
+        {% for proprietaire in proprietaires %}
+        <li>{{proprietaire[1]}}, {{proprietaire[2]}} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+    
+</body>

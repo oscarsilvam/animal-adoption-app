@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}liste d'animaux{% endblock %}
+
+{% block content %}
+    <h1>Recherche d'animaux</h1>
+    <form action="" method="POST">
+        <label for="nom">Saisir un nom ou caracterisitqiue : </label>
+        <input type="text" id="nom" name="saisi">
+        <input type="submit" value="Chercher">
+    </form>
+
+    {% if animaux is not none %}
+       {% if animaux|length == 0 %}
+       <p>Aucun proprietaire coincide avec ce nom</p>
+    {% else %}
+    <ul>
+        {% for animal in animaux %}
+        <li>{{animal[0]}}, {{animal[2]}}, {{animal[3]}},</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+
+{% endblock %}

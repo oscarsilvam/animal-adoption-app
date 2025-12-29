@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Formulaire{% endblock %}
+{% block content %}
+
+<div class="container text-center">
+    <h1>Formulaire de mise en adoption</h1>
+</div>
+
+<form action="{{url_for('treatment_form')}}" method="POST">
+    <div class="container">
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control border border-black" id="nom" name="nom"
+                    placeholder="Nom de l'animal">
+                <span id="err_nom" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-md-6">
+                <label for="espece" class="form-label">Espèce</label>
+                <input type="text" class="form-control border border-black" id="espece" name="espece"
+                    placeholder="Espèce de l'animal">
+                <span id="err_espece" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-md-6">
+                <label for="race" class="form-label">Race</label>
+                <input type="text" class="form-control border border-black" id="race" name="race"
+                    placeholder="Race de l'animal">
+                <span id="err_race" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-md-6">
+                <label for="age" class="form-label">Âge</label>
+                <input type="text" class="form-control border border-black" id="age" name="age"
+                    placeholder="Âge de l'animal">
+                <span id="err_age" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-12">
+                <label for="description" class="form-label">Description de l'animal</label>
+                <textarea class="form-control border border-black" id="description" name="description"
+                    placeholder="Description detaillée" rows="6" cols="50"></textarea>
+                <span id="err_description" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-md-6">
+                <label for="courriel" class="form-label">Courriel</label>
+                <input type="email" class="form-control border border-black" id="courriel" name="courriel">
+                <span id="err_courriel" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-12">
+                <p class="fw-bold mt-3">Où venir chercher l'animal</p>
+            </div>
+
+            <div class="col-md-4">
+                <label for="ad_civique" class="form-label">Adresse civique</label>
+                <input type="text" class="form-control border border-black" id="ad_civique" name="ad_civique">
+                <span id="err_ad_civique" class="text-danger small"></span>
+            </div><br>
+
+            <div class="col-md-4">
+                <label for="ville" class="form-label">Ville</label>
+                <input type="text" class="form-control border border-black" id="ville" name="ville">
+                <span id="err_ville" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label for="c_postal" class="form-label">Code postal</label>
+                <input type="text" class="form-control border border-black" id="c_postal" name="c_postal">
+                <span id="err_code_postal" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary px-5 mt-3 mb-4">Soumettre</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
