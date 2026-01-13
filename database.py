@@ -6,22 +6,23 @@ def animal_select(res):
     
     return{
         "id": res[0],
-        "name" : res[1],
-        "species" : res[2],
-        "breed" : res[3],
-        "age" : res[4],
-        "description" : res[5],
-        "email" : res[6],
-        "address" : res[7],
-        "city" : res[8],
-        "post_code" : res[9]
+        "photo" : res[1],
+        "name" : res[2],
+        "species" : res[3],
+        "breed" : res[4],
+        "age" : res[5],
+        "description" : res[6],
+        "email" : res[7],
+        "address" : res[8],
+        "city" : res[9],
+        "post_code" : res[10]
 
         }
     
 
 class Database:
     """
-    A simple SQLite database handler for managing the 'Animaux' table.
+    A simple SQLite database handler for managing the 'Animals' table.
     
     Attributes:
         db_path (str): Path to the SQLite database file.
@@ -29,12 +30,12 @@ class Database:
         cur (sqlite3.Cursor): Cursor object for executing SQL queries.
     """
     
-    def __init__(self, db_path='db/animaux.db'):
+    def __init__(self, db_path='db/animals.db'):
         """
         Initialize the Database instance.
         Args:
             db_path (str, optional): Path to the SQLite database file.
-            Defaults to 'animaux.db'.
+            Defaults to 'animals.db'.
         """
         self.db_path = db_path
         self.conn = None
@@ -62,59 +63,60 @@ class Database:
             self.cur = None
 
     
-    def add_table_animaux(self):
+    def add_table_animals(self):
         """
-        Create the 'Animaux' table if it does not exist.
+        Create the 'Animals' table if it does not exist.
         
         """
         self.connect()
-        query = ("""CREATE TABLE IF NOT EXISTS Animaux 
+        query = ("""CREATE TABLE IF NOT EXISTS Animals 
             (id_animal INTEGER PRIMARY KEY AUTOINCREMENT, 
-            nom VARCHAR(25), 
-            espece VARCHAR(25), 
+            photo TEXT,     
+            name VARCHAR(25), 
+            species VARCHAR(25), 
             race VARCHAR(25), 
             age INTEGER,
             description VARCHAR(500),
-            courriel VARCHAR(100),
-            adresse VARCHAR(100),
-            ville VARCHAR (50),
-            code_postal VARCHAR(7));""")
+            email VARCHAR(100),
+            address VARCHAR(100),
+            city VARCHAR (50),
+            post_code VARCHAR(7));""")
         
         self.cur.execute(query)
         self.conn.commit()
         self.close()
 
     
-    def get_all_animaux(self):
+    def get_all_animals(self):
         """
-        Retrieve all records from the 'Animaux' table.
+        Retrieve all records from the 'Animals' table.
         
         Returns:
             list of dictionary: Each dictionary represents one animal record.
         """
         self.connect()
-        query = ("""SELECT * FROM Animaux""")
+        query = ("""SELECT * FROM Animals""")
 
         res = self.cur.execute(query)
-        animaux = res.fetchall()
+        animals = res.fetchall()
         self.close()
-        return [animal_select(animal) for animal in animaux]
+        return [animal_select(animal) for animal in animals]
     
     
-    def add_animal(self, nom, espece, race, age, description, courriel, 
-                   adresse, ville, code_postal):
+    def add_animal(self, photo, name, species, race, age, description, email, 
+                   address, city, post_code):
         """
-        Insert a new animal record into the 'Animaux' table.
+        Insert a new animal record into the 'Animals' table.
         Returns:
             int: The inserted animal.
         """
         self.connect()
-        query = ("""INSERT INTO Animaux(nom, espece, race, age, 
-            description, courriel, adresse, ville, code_postal) 
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)""")
+        query = ("""INSERT INTO Animals(photo, name, species, race, age, 
+            description, email, address, city, post_code) 
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""")
         
-        self.cur.execute(query, (nom, espece, race, age, description, 
-                                 courriel, adresse, ville, code_postal))
+        self.cur.execute(query, (photo, name, species, race, age, description, 
+                                 email, address, city, post_code))
         
         self.conn.commit()
         res = self.cur.execute("SELECT LAST_INSERT_ROWID()")
@@ -134,7 +136,7 @@ class Database:
             or None if not found.
         """
         self.connect()
-        query = ("""SELECT * FROM Animaux 
+        query = ("""SELECT * FROM Animals 
                  WHERE id_animal = ?""")
         res = self.cur.execute(query, (id_animal,))
         line = res.fetchone()
@@ -149,8 +151,8 @@ class Database:
     
     def get_entry(self, entry):
         """
-        Search for animals matching the entry in nom, espece, race, 
-        description, or ville.
+        Search for animals matching the entry in name, espece, race, 
+        description, or city.
             Args:
         entry (str): The search keyword.
             Returns:
@@ -158,16 +160,16 @@ class Database:
         """
         self.connect()
         
-        query = ("""SELECT * FROM Animaux 
-                      WHERE nom LIKE ? OR espece LIKE ? OR race LIKE ? 
-                      OR description LIKE ? OR ville LIKE ?""")
+        query = ("""SELECT * FROM Animals 
+                      WHERE name LIKE ? OR species LIKE ? OR race LIKE ? 
+                      OR description LIKE ? OR city LIKE ?""")
         
         params = tuple(['%' + entry + '%'] * 5)
         
         res = self.cur.execute(query,params)
-        animaux = res.fetchall()
+        animals = res.fetchall()
         self.close()
-        return [animal_select(a) for a in animaux]
+        return [animal_select(a) for a in animals]
 
  
     

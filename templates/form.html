@@ -7,22 +7,22 @@
     <h1>Formulaire de mise en adoption</h1>
 </div>
 
-<form action="{{url_for('treatment_form')}}" method="POST">
+<form id="form_adoption" action="{{url_for('treatment_form')}}" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row g-3">
 
             <div class="col-md-6">
-                <label for="nom" class="form-label">Nom</label>
-                <input type="text" class="form-control border border-black" id="nom" name="nom"
+                <label for="name" class="form-label">Nom</label>
+                <input type="text" class="form-control border border-black" id="name" name="name"
                     placeholder="Nom de l'animal">
-                <span id="err_nom" class="text-danger small"></span>
+                <span id="err_name" class="text-danger small"></span>
             </div><br>
 
             <div class="col-md-6">
-                <label for="espece" class="form-label">Espèce</label>
-                <input type="text" class="form-control border border-black" id="espece" name="espece"
+                <label for="species" class="form-label">Espèce</label>
+                <input type="text" class="form-control border border-black" id="species" name="species"
                     placeholder="Espèce de l'animal">
-                <span id="err_espece" class="text-danger small"></span>
+                <span id="err_species" class="text-danger small"></span>
             </div><br>
 
             <div class="col-md-6">
@@ -46,10 +46,16 @@
                 <span id="err_description" class="text-danger small"></span>
             </div><br>
 
+            <div>
+                <label for="photo">Ajoutez une photo de l'animal</label>
+                <input type="file" id="photo" name="photo" accept="image/png, image/jpeg">
+                <span id="err_photo" class="text-danger small"></span>
+            </div>
+
             <div class="col-md-6">
-                <label for="courriel" class="form-label">Courriel</label>
-                <input type="email" class="form-control border border-black" id="courriel" name="courriel">
-                <span id="err_courriel" class="text-danger small"></span>
+                <label for="email" class="form-label">Courriel</label>
+                <input type="email" class="form-control border border-black" id="email" name="email">
+                <span id="err_email" class="text-danger small"></span>
             </div><br>
 
             <div class="col-12">
@@ -57,21 +63,21 @@
             </div>
 
             <div class="col-md-4">
-                <label for="ad_civique" class="form-label">Adresse civique</label>
-                <input type="text" class="form-control border border-black" id="ad_civique" name="ad_civique">
-                <span id="err_ad_civique" class="text-danger small"></span>
+                <label for="address" class="form-label">Adresse civique</label>
+                <input type="text" class="form-control border border-black" id="address" name="address">
+                <span id="err_address" class="text-danger small"></span>
             </div><br>
 
             <div class="col-md-4">
-                <label for="ville" class="form-label">Ville</label>
-                <input type="text" class="form-control border border-black" id="ville" name="ville">
-                <span id="err_ville" class="text-danger small"></span>
+                <label for="city" class="form-label">Ville</label>
+                <input type="text" class="form-control border border-black" id="city" name="city">
+                <span id="err_city" class="text-danger small"></span>
             </div>
 
             <div class="col-md-4">
-                <label for="c_postal" class="form-label">Code postal</label>
-                <input type="text" class="form-control border border-black" id="c_postal" name="c_postal">
-                <span id="err_code_postal" class="text-danger small"></span>
+                <label for="post_code" class="form-label">Code postal</label>
+                <input type="text" class="form-control border border-black" id="post_code" name="post_code">
+                <span id="err_post_code" class="text-danger small"></span>
             </div>
 
             <div class="col-12 text-center">
@@ -80,6 +86,7 @@
         </div>
     </div>
 </form>
-
-
+{% block scripts %}
+<script src="{{url_for('static', filename='js/script_form_adoption.js')}}"></script>
+{% endblock %}
 {% endblock %}

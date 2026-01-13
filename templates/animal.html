@@ -4,6 +4,8 @@
 {% block content %}
 <div class="container text-center">
     <h1>{{animal['name']}}</h1>
+    <!--<img src="{{url_for('static', filename='uploads/fotito_kiwi.PNG')}}">-->
+    <img src="{{url_for('static', filename='uploads/' ~ animal['photo'])}}">
 </div>
 <div class="container">
     <dl class="row">
