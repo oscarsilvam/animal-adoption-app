@@ -93,7 +93,7 @@ def treatment_form():
                                          email, address, city, post_code)   
             
         return render_template("animal.html", animal=add_animal, photo=photo)
-
+        
     elif request.method == "GET":
         return redirect(url_for('index'))
     

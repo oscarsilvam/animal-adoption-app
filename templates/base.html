@@ -10,18 +10,25 @@
 </head>
 
 <body class="bg-ligth">
-
-    <nav class="navbar" style="background-color: #4db8ff;" data-bs-theme="light">
+    <nav class="navbar navbar-expand-md" style="background-color: #4db8ff;" data-bs-theme="light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('index') }}">Accueil</a>
-            <form class="d-flex" role="search" action="{{ url_for('search')}}" method="GET">
-                <input id="recherche" name="recherche" class="form-control me-2" type="search" placeholder="Search"
-                    aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Chercher</button>
-            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex" role="search" action="{{ url_for('search')}}" method="GET">
+                    <input id="recherche" name="recherche" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Chercher</button>
+                </form>
+            </div>
         </div>
     </nav>
 
-        {% block content%}{% endblock %}
+    {% block content%}{% endblock %}
     {% block scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 </body>
