@@ -42,14 +42,14 @@ def index():
     list_animals = get_db().get_all_animals()
 
     if len(list_animals) > 0:
-        nbr = min(5, len(list_animals))
+        nbr = min(6, len(list_animals))
 
-        #Choose 5 animals from the list
+        #Choose 6 animals from the list
         chosen_anim = random.sample(list_animals, nbr)
     else:
         chosen_anim =[]    
 
-    return render_template("homepage.html", animaux=chosen_anim)
+    return render_template("homepage.html", animals=chosen_anim)
 
 
 @app.route("/formulaire")
@@ -102,4 +102,4 @@ def search():
     val = request.args.get('recherche').strip()
     data = get_db().get_entry(val)
     
-    return render_template('selection.html', animaux_select=data)    
+    return render_template('selection.html', animals=data)    

@@ -1,0 +1,26 @@
+<div class="row">
+        {% for animal in animals %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card mb-4 animal-homepage">
+                <img src="{{url_for('static', filename='uploads/' ~ animal['photo'])}}" class="card-img-top"
+                    alt="photo animal">
+                <div class="card-body">
+                    <h5 class="card-title">{{animal['name']}}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                        {{animal['species']}}, {{animal['age']}} ans
+                    </h6>
+                    <p class="card-text">{{animal['description']}}</p>
+                    <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;"
+                        href="{{ url_for('presentation_animal', id=animal['id'])}}">
+                        Savoir plus sur {{animal['name']}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

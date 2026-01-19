@@ -11,7 +11,7 @@
 
 <body class="bg-ligth">
 
-    <nav class="navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+    <nav class="navbar" style="background-color: #4db8ff;" data-bs-theme="light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('index') }}">Accueil</a>
             <form class="d-flex" role="search" action="{{ url_for('search')}}" method="GET">
@@ -22,8 +22,6 @@
         </div>
     </nav>
 
-    <div id="container">
         {% block content%}{% endblock %}
-    </div>
     {% block scripts %}{% endblock %}
 </body>

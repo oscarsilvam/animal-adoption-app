@@ -1,20 +1,56 @@
-h1 {
-    font-size: 40px;
+h1, h2 {
+    font-size: 45px;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-family:  "Papyrus", Helvetica, Arial, sans-serif;
 }
 
-#titre {
-    font-size: 60px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+#title {
+    font-size: 70px;
+    font-style: normal;
+    font-family: Comfortaa, cursive;
 }
-
 
 body {
     background:
         linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7)),
         url('/static/img/pattes.png') repeat;
-
 }
 
+.navbar {
+    height: 80px;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-family: Comfortaa, cursive;
+}
+
+.navbar .navbar-brand{
+    font-size: 2rem;
+    color: white;
+}
+
+.navbar .navbar-brand:hover {
+    color: rgb(229.5, 229.5, 229.5);
+}
+
+.hero-img {
+    height: 60vh;
+    object-fit: cover; /*prevent image distortion*/
+}
+
+.animal-homepage {
+    border-radius: 8px;
+    box-shadow: 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.animal-homepage:hover {
+    transform: translateY(-10px);
+}
+
+.animal-homepage img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
