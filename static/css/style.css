@@ -30,6 +30,10 @@ body {
     color: white;
 }
 
+#navbarNav #formu {
+    float: right;
+}
+
 .navbar .navbar-brand:hover {
     color: rgb(229.5, 229.5, 229.5);
 }
