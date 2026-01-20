@@ -1,16 +1,19 @@
 # :dog: Animal Adoption Web Application
 
 
-A simple web application built with **Flask** allows users to add animals for adoption, browse available animals, and search through the database.
+A simple web application built with Flask that allows users to add animals for adoption, browse available animals, and search through the database.
 
 This project was developed as part of my learning journey in web development and backend programming.
 
-## Features
-- Add an animal
-- Search animals
-- Upload photos
+## :bulb: Features
+- Add an animal for adoption via a form
+- Search animals by keyword
+- Upload an image for each animal
+- Client-side form validation with JavaScript
+- Persistent storage using SQLite
+- Responsive UI built with Bootstrap
 
-## Technologies Used
+## :hammer: Technologies Used
 - Python 3
 - Flask
 - SQLite
@@ -19,7 +22,9 @@ This project was developed as part of my learning journey in web development and
 - Jinja2
 - HTML/CSS
 
-## Project Structure
+## :file_folder: Project Structure
+
+```text
 .
 ├── database.py     
 ├── db
@@ -48,22 +53,29 @@ This project was developed as part of my learning journey in web development and
     ├── recherche.html
     └── selection.html
 
+```    
 
-## Form Validation
+
+## :mag_right: Form Validation
 - Client-side validation implemented in JavaScript
 - Fields such as name, age, email, postal code, and photo format validated before submission
 - Backend handles file upload security and data persistance
 
-## NOTES
+## :blue_book: NOTES
 This project focuses on:
 
 - Understanding Flask routing and templates
-- Hnadling forms and file uploads
+- Handling forms and file uploads
 - Basic database operations
 - Improving user experience with client-side validation
 
-Future improvements could include:
+## :telescope: Future improvements could include:
 - Backend validation
 - Pagination
 - REST API endpoints
+
+## :bust_in_silhouette: Author
+
+Oscar Silva
+Software Development Student
 
