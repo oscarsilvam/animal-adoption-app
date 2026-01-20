@@ -12,3 +12,6 @@ db/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Ignore uploaded images
+static/uploads/
